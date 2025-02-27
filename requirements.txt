@@ -1,5 +1,7 @@
 googledrivedownloader
 opencv-python
 numpy
-tensorflow
+#tensorflow
 tqdm
+gtts
+

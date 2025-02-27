@@ -1,2 +1,8 @@
 venv/
 *.mp3
+*.pyc
+/Generador sonido
+/debugger
+/source
+/data/sound
+data/buttons
