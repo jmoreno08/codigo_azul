@@ -3,7 +3,6 @@ import os
 import json
 import threading
 import datetime
-import subprocess
 
 __name__ = "Caller"
 __author__ = "Juanez"
@@ -13,13 +12,11 @@ __email__ = "juangarcia@pimedica.com"
 __version__ = 3.0
 
 URL1 = "http://{IP}:8081/locations/integration/get_last_call"
-
 URL2 =  "http://{IP}:8081/locations/integration/688563877235/get_records/start_date={CURRENT_DATA}&end_date={CURRENT_DATA}&active=true"
-
 URL3 =  "http://{IP}:8081/locations/integration/998106382534/get_records/start_date={CURRENT_DATA}&end_date={CURRENT_DATA}&active=true"
+URL4 =  "http://{IP}:8081/locations/integration/998106382534/get_records/start_date={CURRENT_DATA}&end_date={CURRENT_DATA}&active=true"
 
-URL4 =  "http://{IP}:8081/locations/integration/692604583545/get_records/start_date={CURRENT_DATA}&end_date={CURRENT_DATA}&active=true"
-
+.
 class Caller(object):
     def __init__(self, debug, path):
         self.debug = debug
@@ -77,6 +74,8 @@ class Caller(object):
                     
                     Current_Date = datetime.date.today().strftime('%Y-%m-%d')
 
+                    
+
                     if len(ip) > 0:
                         
                         if(ip) == "192.168.5.30" :
@@ -93,7 +92,7 @@ class Caller(object):
                             w=convert(w)
                             print(ip,w,r.status_code)
                         
-                        elif(ip) == "192.168.5.34":
+                        elif(ip) == "192.168.5.35":
 
                             r = requests.get(URL4.format(IP=ip,CURRENT_DATA=Current_Date, timeout=5))
                             w = r.json()
@@ -119,7 +118,5 @@ class Caller(object):
             for buffer in self.buffer:
                 f = os.path.join(self.sound, buffer)
                 self.debug.put("PLAYING {} AT {}".format(f, self.buttons[buffer]['l']), "normal")
-                vlc_path = r"C:\Program Files\VideoLAN\VLC\vlc.exe"
-                subprocess.run([vlc_path, f, "--play-and-exit"], check=True)
-                #os.system("vlc {} --play-and-exit".format(f))
+                os.system("vlc {} --play-and-exit".format(f))
                 self.buffer.remove(buffer)
