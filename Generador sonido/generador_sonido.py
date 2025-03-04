@@ -63,12 +63,12 @@ def on_item_selected(event):
 
 # Crear ventana principal
 root = tk.Tk()
-root.title("Texto a Voz")
+root.title("Generador Sonido codigo azul")
 root.geometry("600x400")
 
 # Etiquetas y campos de entrada
-tk.Label(root, text="Ingrese Ubicacion:").pack(pady=5)
-entry_texto = tk.Entry(root, width=40)
+tk.Label(root, text="Ingrese Ubicacion:").pack(pady=5) 
+entry_texto = tk.Entry(root, text="Nombre" ,width=40)
 entry_texto.pack(pady=5)
 
 tk.Label(root, text="Codigo del Boton de llamado:").pack(pady=5)
